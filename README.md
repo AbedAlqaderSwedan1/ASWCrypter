@@ -1,7 +1,7 @@
 # Welcome to the ASWCrypter script v1.0 100% FUD
 An Bash&Python Script For Generating Payloads that Bypasses All Antivirus so far [**FUD**] ;) .
 
-# PLEASE DON'T UPLOAD BACKDOOT TO WWW.VIRUSTOTAL.COM
+**PLEASE DON'T UPLOAD BACKDOOT TO WWW.VIRUSTOTAL.COM
   23/08/2018 
   ![](ScreenShots/Screenshot_2.png)
 
