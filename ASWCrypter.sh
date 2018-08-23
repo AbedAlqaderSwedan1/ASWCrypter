@@ -174,7 +174,7 @@ sleep 2
 python obfuscate.py
 
 getShell=`cat shellWithNull`
-echo "[$GREEN✔$RESTORE]$YELLOW Injecting shellcode -> $PayloadName.hta! $RESTORE"
+echo "[$GREEN✔$RESTORE]$YELLOW Injecting shellcode  [$PayloadName.hta!] $RESTORE"
  
 sleep 3
 
