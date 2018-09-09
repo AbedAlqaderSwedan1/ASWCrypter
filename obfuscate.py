@@ -5,6 +5,7 @@ import string
 import time
 saveShellWithNull = open("shellWithNull", "w")
 #Decode Strings base64  
+#Coded By AbedAlqader Swedan
 def decodbs64():
    filename = "Base64"
    shell = open(filename, "r")
